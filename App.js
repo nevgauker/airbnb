@@ -17,13 +17,17 @@ import HomeScreen from './src/screens/Home';
 
 import SearchResultsScreen from './src/screens/SearchResults';
 
+import DestinationsSearchScreen from './src/screens/DestinationsSearch';
+
 const App: () => React$Node = () => {
+
   return (
     <>
       <StatusBar barStyle="dark-content"/>
       <SafeAreaView>
         {/* <HomeScreen/> */}
-        <SearchResultsScreen/>
+        {/* <SearchResultsScreen/> */}
+        <DestinationsSearchScreen/>
       </SafeAreaView>
     </>
   );
