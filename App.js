@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import 'react-native-gesture-handler';
 import {
   SafeAreaView,
   StyleSheet,
@@ -21,18 +22,18 @@ import DestinationsSearchScreen from './src/screens/DestinationsSearch';
 import GuestsScreen from './src/screens/Guests';
 
 
+import Router from './src/navigation/Router';
+
+
 
 const App: () => React$Node = () => {
 
   return (
     <>
       <StatusBar barStyle="dark-content"/>
-      <SafeAreaView>
-        {/* <HomeScreen/> */}
-        {/* <SearchResultsScreen/> */}
-        {/* <DestinationsSearchScreen/> */}
-        <GuestsScreen/>
-      </SafeAreaView>
+        <Router/>
+       
+    
     </>
   );
 };
