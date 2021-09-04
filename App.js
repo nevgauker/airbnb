@@ -24,8 +24,6 @@ import GuestsScreen from './src/screens/Guests';
 
 import Router from './src/navigation/Router';
 
-
-
 const App: () => React$Node = () => {
 
   return (

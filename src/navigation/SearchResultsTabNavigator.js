@@ -1,6 +1,10 @@
 import React, {useState, useEffect} from "react";
 import {  createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SearchResultsScreen from '../screens/SearchResults';
+import SearchResultsMapScreen from '../screens/SearchResultsMap';
+
+
+
 import { useRoute } from "@react-navigation/native";
 // import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
@@ -22,7 +26,7 @@ const SearchResultsTabNavigator = (props) => {
       }
       }}>
         <Tab.Screen name={"list"} component={SearchResultsScreen}/>
-        <Tab.Screen name={"map"} component={SearchResultsScreen}/>
+        <Tab.Screen name={"map"} component={SearchResultsMapScreen}/>
     </Tab.Navigator>
   );
 };
