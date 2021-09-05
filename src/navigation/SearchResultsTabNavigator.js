@@ -17,6 +17,12 @@ import {
 const Tab = createMaterialTopTabNavigator();
 
 const SearchResultsTabNavigator = (props) => {
+
+
+    const route = useRoute();
+    const { guests }  = route.params;
+
+
   return (
        <Tab.Navigator
        tabBarOptions={{
@@ -25,8 +31,16 @@ const SearchResultsTabNavigator = (props) => {
         backgroundColor: '#f15454',
       }
       }}>
-        <Tab.Screen name={"list"} component={SearchResultsScreen}/>
-        <Tab.Screen name={"map"} component={SearchResultsMapScreen}/>
+        <Tab.Screen name={"list"}>
+            {() => (
+                <SearchResultsScreen guests={guests}/>
+            )}
+        </Tab.Screen>
+        <Tab.Screen name={"map"}>
+            {() => (
+                <SearchResultsMapScreen guests={guests}/>
+            )}
+        </Tab.Screen>
     </Tab.Navigator>
   );
 };
