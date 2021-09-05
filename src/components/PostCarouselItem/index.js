@@ -15,8 +15,7 @@ const Post = (props) => {
   }
 
   return (
-    //    <Pressable onPress={goToPostPage} style={[styles.container, { width: width - 60}]}>
-    <View style={[styles.container, { width: width - 60}]}>
+    <Pressable onPress={goToPostPage} style={[styles.container, { width: width - 60}]}>
       <View style={styles.innerContainer}>
         {/* Image  */}
         <Image
@@ -42,8 +41,8 @@ const Post = (props) => {
           </Text>
         </View>
       </View>
-    {/* </Pressable> */}
-    </View>
+    </Pressable>
+   
   );
 };
 export default Post;

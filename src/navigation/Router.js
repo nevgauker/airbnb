@@ -37,6 +37,13 @@ return (
                               title:'How many people?'
                         }}
                   />
+                   <Stack.Screen
+                        name={"Post"}
+                        component={PostScreen}
+                        options={{
+                              title: "Accommodation"
+                        }}
+                  />
             </Stack.Navigator>
       </NavigationContainer>
 

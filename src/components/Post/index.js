@@ -7,14 +7,22 @@ import {
     } from 'react-native';
 
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import { useNavigation } from '@react-navigation/native';
 
 import styles from './styles';
 
 const Post = (props) => {
 
     const post = props.post;
+    const navigation = useNavigation();
+
+
+    const goToPostPage = () => {
+        navigation.navigate('Post', {postId: post.id});
+    }
+
 return (
-    <View style={styles.container}>
+    <Pressable onPress={goToPostPage} style={styles.container}>
        <Image source={{uri: post.image}} style={styles.image}/>
             
         <Text style={styles.bedrooms}>{post.bed} bed {post.bedroom} bedroom</Text>
@@ -25,7 +33,7 @@ return (
             / night
         </Text>
                 <Text style={styles.totalPrice}>${post.totalPrice} total</Text>
-    </View>
+    </Pressable>
 )
 }
 
