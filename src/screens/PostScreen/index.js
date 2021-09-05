@@ -7,7 +7,7 @@ import {
 import styles from './styles';
 import Post from '../../components/DetailedPost';
 import places from '../../../assets/data/feed';
-import { useRoute } from '@react-navigation/native';
+import { useRoute} from '@react-navigation/native';
 
 const PostScreen = (props) => {
 

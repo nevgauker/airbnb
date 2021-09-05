@@ -15,14 +15,12 @@ import {
 } from 'react-native';
 
 import HomeScreen from './src/screens/Home';
-
 import SearchResultsScreen from './src/screens/SearchResults';
-
 import DestinationsSearchScreen from './src/screens/DestinationsSearch';
 import GuestsScreen from './src/screens/Guests';
-
-
 import Router from './src/navigation/Router';
+
+import { withAuthenticator } from 'aws-amplify-react-native'
 
 const App: () => React$Node = () => {
 
@@ -40,4 +38,5 @@ const styles = StyleSheet.create({
  
 });
 
-export default App;
+export default withAuthenticator(App);
+
