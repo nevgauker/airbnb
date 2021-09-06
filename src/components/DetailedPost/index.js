@@ -4,7 +4,7 @@ import styles from './styles.js';
 
 const Post = (props) => {
 
-  const post = props.post;
+  const { post } = props;
 
   return (
     <ScrollView>
@@ -12,7 +12,7 @@ const Post = (props) => {
         {/* Image  */}
         <Image
           style={styles.image}
-          source={{uri: post.image}}
+          source={{uri: post.image ?? ""}}
         />
 
         {/* Bed & Bedroom  */}

@@ -2,11 +2,11 @@ import React, {useState, useEffect} from "react";
 import {  createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SearchResultsScreen from '../screens/SearchResults';
 import SearchResultsMapScreen from '../screens/SearchResultsMap';
-
+import { API  ,graphqlOperation } from 'aws-amplify';
+import { listPosts } from '../graphql/queries';
 
 
 import { useRoute } from "@react-navigation/native";
-// import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 
 import { 
@@ -18,9 +18,38 @@ const Tab = createMaterialTopTabNavigator();
 
 const SearchResultsTabNavigator = (props) => {
 
-
+    const [posts,setPosts] = useState([]);
     const route = useRoute();
-    const { guests }  = route.params;
+    const { guests, viewport }  = route.params;
+
+    useEffect(() => {
+        console.log(viewport);
+        const fetchPosts = async () => {
+            try {
+                const postsResult = await API.graphql(
+                    graphqlOperation(listPosts,{
+                      filter: {
+                        and: {
+                            maxGuests: {
+                                ge: guests
+                            },
+                            latitude: {
+                                between: [viewport.southwest.lat,viewport.northeast.lat]
+                            },
+                            longitude: {
+                                between: [viewport.southwest.lng,viewport.northeast.lng]
+                            }
+                        }
+                      }
+                    })
+                )
+                setPosts(postsResult.data.listPosts.items);
+            }catch(e){
+                console.log(e);
+            }     
+        };
+        fetchPosts();
+    },[]);
 
 
   return (
@@ -33,12 +62,12 @@ const SearchResultsTabNavigator = (props) => {
       }}>
         <Tab.Screen name={"list"}>
             {() => (
-                <SearchResultsScreen guests={guests}/>
+                <SearchResultsScreen posts={posts}/>
             )}
         </Tab.Screen>
         <Tab.Screen name={"map"}>
             {() => (
-                <SearchResultsMapScreen guests={guests}/>
+                <SearchResultsMapScreen posts={posts}/>
             )}
         </Tab.Screen>
     </Tab.Navigator>

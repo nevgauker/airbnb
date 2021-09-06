@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useEffect, useRef, useState } from "react";
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import places from '../../../assets/data/feed';
 import { 
@@ -27,29 +27,7 @@ const SearchResultsMapScreen = (props) => {
         }
     })
 
-    const [posts,setPosts] = useState([]);
-    const { guests } = props;
-
-
-    useEffect(() => {
-        const fetchPosts = async () => {
-            try {
-                const postsResult = await API.graphql(
-                    graphqlOperation(listPosts,{
-                      filter: {
-                        maxGuests: {
-                          ge: guests
-                        }
-                      }
-                    })
-                )
-                setPosts(postsResult.data.listPosts.items);
-            }catch(e){
-                console.log(e);
-            }     
-        };
-        fetchPosts();
-    },[]);
+    const { posts } = props;
 
     useEffect(() => {
         if (!selectedPlaceId || !flatlist) {

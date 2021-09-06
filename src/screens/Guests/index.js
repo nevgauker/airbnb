@@ -5,7 +5,7 @@ import {
     Pressable
     } from 'react-native';
 
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import styles from './styles';
 
@@ -15,6 +15,7 @@ const [children,setChildren] = useState(0);
 const [infants,setInfants] = useState(0);
 
 const navigation = useNavigation();
+const route = useRoute();
 
 
 return (
@@ -97,15 +98,21 @@ return (
             </View>
         </View>
         <Pressable
-        onPress={() => navigation.navigate('Home',{
+        onPress={() => {
+            console.log('vp');
+            console.log(route.viewport);
+
+            navigation.navigate('Home',{
                 screen: 'Explore',
                 params: {
                     screen:'SearchResults',
                     params:{
-                        guests: adults + children
+                        guests: adults + children,
+                        viewport: route.params.viewport
                     }
                 }
-                })
+                });
+                }
         }  
         style={{
         marginBottom:20,

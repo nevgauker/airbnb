@@ -12,11 +12,12 @@ import { useRoute} from '@react-navigation/native';
 const PostScreen = (props) => {
 
     const route = useRoute();
-    const post = places.find(place => place.id === route.params.postId);
+    //const post = places.find(place => place.id === route.params.postId);
+    
 
 return (
     <View styles={{backgroundColor:'white', height:'100%'}}>
-        <Post post={post}/>
+        <Post post={route.params.post}/>
     </View>
 );
 };
